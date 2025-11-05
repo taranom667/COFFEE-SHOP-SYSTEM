@@ -1,13 +1,13 @@
 class Payment:
-    def __init__(self,payment_id,order,total_price,payment_type,date_time,customer_id,payment_status,factor_id):
-       self.payment_id = payment_id
-       self.order = order
-       self.total_price = total_price
-       self.payment_type = payment_type
-       self.date_time = date_time
-       self.customer_id = customer_id
-       self.status = status
-       self.factor_id = factor_id
+    def __init__(self, id, order_id, total_price, payment_type, date_time, customer_id, status, factor_id):
+        self.id = id
+        self.order_id = order_id
+        self.total_price = total_price
+        self.payment_type = payment_type
+        self.date_time = date_time
+        self.customer_id = customer_id
+        self.status = status
+        self.factor_id = factor_id
 
     def validate(self):
         pass
@@ -16,4 +16,6 @@ class Payment:
         return f"{self.__dict__}"
 
     def to_tuple(self):
-        return tuple((self.payment_id,self.order,self.total_price,self.payment_type,self.date_time,self.customer_id,self.status,self.factor_id))
+        return tuple((
+                     self.id, self.order_id, self.total_price, self.payment_type, self.date_time, self.customer_id,
+                     self.status, self.factor_id))

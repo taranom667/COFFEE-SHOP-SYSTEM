@@ -1,8 +1,8 @@
 class Dish():
-    def __init__(self, dish_id, name, number, price, category, available, ingredients):
-        self.dish_id = dish_id
+    def __init__(self,id, name,quatity, price, category, available, ingredients):
+        self.id =id
         self.name = name
-        self.number = number
+        self.quatity = quatity
         self.price = price
         self.category = category
         self.available = available
@@ -13,4 +13,10 @@ class Dish():
 
     def to_tuple(self):
         return tuple(
-            (self.dish_id, self.name, self.number, self.price, self.category, self.available, self.ingredients))
+            (self.id, self.name, self.quatity, self.price, self.category, self.available, self.ingredients))
+
+
+
+    def check_availability(dish):
+        if dish.available>0:
+            return True
