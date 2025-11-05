@@ -16,7 +16,7 @@ create table if not exists customers
 --Employees:(id,first_name, last_name,role,username,password,salary)
 create table if not exists employees
 (
-    id integer is primary key autoincrement,
+    id integer primary key autoincrement,
     first_name text not null,
     last_name text not null,
     role text not null,
@@ -29,7 +29,7 @@ create table if not exists employees
 --delivery :(id,order_id,rider,status,address)
 create table if not exists deliveries(
 
-    id integer is primary key autoincrement,
+    id integer  primary key autoincrement,
     order_id integer not null,
     rider text not null,
     status text not null,
@@ -39,7 +39,7 @@ create table if not exists deliveries(
 --dish :(id, name,quantity, price, category, available, ingredients)
 create table if not exists dishes(
 
-    id integer is primary key autoincrement,
+    id integer  primary key autoincrement,
     name text not null,
     quantity integer not null,
     price integer not null,
@@ -51,7 +51,7 @@ create table if not exists dishes(
 --order :(id, customer_name, dish, status, total_price, delivery_id, date_time)
 create table if not exists orders(
 
-    id integer is primary key autoincrement,
+    id integer  primary key autoincrement,
     customer_name text not null,
     dish text not null,
     status text not null,
@@ -63,7 +63,7 @@ create table if not exists orders(
 --inventory :( id, name, material, manager, location, capacity)
 create table if not exists inventories(
 
-    id integer is primary key autoincrement,
+    id integer  primary key autoincrement,
     name text not null,
     material text not null,
     manager text not null,
@@ -73,7 +73,7 @@ create table if not exists inventories(
 --payment :( id,order_id,total_price,payment_type,date_time,customer_id,status,factor_id)
 create table if not exists payments(
 
-    id integer is primary key autoincrement,
+    id integer  primary key autoincrement,
     order_id text not null,
     total_price integer not null,
     payment_type text not null,
@@ -87,7 +87,7 @@ create table if not exists payments(
 --Raw_material:(id, name, category, unit, quantity, price, purchase_date, expiry_date, location)
 create table if not exists Raw_materials(
 
-    id integer is primary key autoincrement,
+    id integer  primary key autoincrement,
     name text not null,
     category text not null,
     unit text not null,
