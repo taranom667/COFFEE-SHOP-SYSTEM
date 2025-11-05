@@ -1,8 +1,8 @@
 import sqlite3
-from model.customer import *
+from model.employee import *
 
 
-class Customer_repository:
+class Employee_repository:
     def __init__(self):
         self.cursor = None
         self.connection = None
@@ -15,8 +15,8 @@ class Customer_repository:
         self.cursor.close()
         self.connection.close()
 
-    def add_customer(self, customer):
-        self.cursor.execute("insert into customers(id,first_name,last_name,phone_number,order_id) values (?,?,?,?)",
+    def add_employee(self, employee):
+        self.cursor.execute("insert into employees(id,first_name, last_name,role,username,password,salary) values (?,?,?,?,?)",
                             [customer.id, customer.first_name, customer.last_name, customer.phone_number,
                              customer.order_id])
 
