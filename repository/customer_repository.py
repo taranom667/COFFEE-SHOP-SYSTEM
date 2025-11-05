@@ -41,19 +41,19 @@ class Customer_repository:
         self.disconnect()
         return customer
 
-    def find_by_firstname_and_lastname(self, firstname,lastname):
+    def find_by_firstname_and_lastname(self, firstname, lastname):
         self.connect()
-        self.cursor.execute("select * from customers where first_name=? and last_name=?", [firstname,lastname] )
-        customer_list =[Customer(*customer) for customer in  self.cursor.fetchall()]
+        self.cursor.execute("select * from customers where first_name=? and last_name=?", [firstname, lastname])
+        customer_list = [Customer(*customer) for customer in self.cursor.fetchall()]
         self.disconnect()
         return customer_list
 
-    def find_by_phone_number(self,number):
-         self.connect()
-         self.cursor.execute("select * from customers where  phone_number=?", [number])
-         customer_list=[Customer(*customer)for customer in self.cursor.fetchall()]
-         self.disconnect()
-         return customer_list
+    def find_by_phone_number(self, number):
+        self.connect()
+        self.cursor.execute("select * from customers where  phone_number=?", [number])
+        customer_list = [Customer(*customer) for customer in self.cursor.fetchall()]
+        self.disconnect()
+        return customer_list
 
     def find_by_order_id(self, id):
         self.connect()

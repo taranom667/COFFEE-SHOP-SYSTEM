@@ -1,5 +1,5 @@
 import sqlite3
-from model.employee import *
+from model.employee import Employee
 
 
 class Employee_repository:
@@ -16,48 +16,87 @@ class Employee_repository:
         self.connection.close()
 
     def add_employee(self, employee):
-        self.cursor.execute("insert into employees(id,first_name, last_name,role,username,password,salary) values (?,?,?,?,?)",
-                            [customer.id, customer.first_name, customer.last_name, customer.phone_number,
-                             customer.order_id])
-
-        customer.id = self.cursor.lastrowid
-        self.connection.commit()
-        return customer
-
-    def update_customer(self, customer):
         self.cursor.execute(
-            "update customers set first_name=?,last_name=?,phone_number=?,order_id=?) where id=?",
-            [customer.first_name, customer.last_name, customer.phone_number, customer.order_id])
+            "insert into employees(id,first_name, last_name,role,username,password,salary) values (?,?,?,?,?,?)",
+            [employee.id, employee.first_name, employee.last_name, employee.role, employee.username, employee.password,
+             employee.salary])
+
+        employee.id = self.cursor.lastrowid
+        self.connection.commit()
+        return employee
+
+    def update_employee(self, employee):
+        self.cursor.execute(
+            "update employees set first_name=?,last_name=?,role=?,username=?,password=?,salary=?) where id=?",
+            [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,
+             employee.salary])
 
         self.connection.commit()
         self.disconnect()
-        return customer
+        return employee
 
-    def delete_customer(self, customer):
+    def delete_employee(self, employee):
         self.cursor.execute(
             "delete from customers where id=?", [id])
 
         self.connection.commit()
         self.disconnect()
-        return customer
+        return employee
 
-    def find_by_firstname_and_lastname(self, firstname,lastname):
+    def find_by_firstname_and_lastname(self, firstname, lastname):
         self.connect()
-        self.cursor.execute("select * from customers where first_name=? and last_name=?", [firstname,lastname] )
-        customer_list =[Customer(*customer) for customer in  self.cursor.fetchall()]
+        self.cursor.execute("select * from customers where first_name=? and last_name=?", [firstname, lastname])
+        employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
         self.disconnect()
-        return customer_list
+        return employee_list
 
-    def find_by_phone_number(self,number):
-         self.connect()
-         self.cursor.execute("select * from customers where  phone_number=?", [number])
-         customer_list=[Customer(*customer)for customer in self.cursor.fetchall()]
-         self.disconnect()
-         return customer_list
+    def find_by_phone_number(self, number):
+        self.connect()
+        self.cursor.execute("select * from customers where  phone_number=?", [number])
+        employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
+        self.disconnect()
+        return employee_list
 
     def find_by_order_id(self, id):
         self.connect()
-        self.cursor.execute("select * from customers where  order_id=?", [id])
-        customer_list = [Customer(*customer) for customer in self.cursor.fetchall()]
+        self.cursor.execute("select * from employees where  order_id=?", [id])
+        employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
         self.disconnect()
-        return customer_list
+        return employee_list
+
+    def find_by_role(self, role):
+        self.connect()
+        self.cursor.execute("select * from employees where  role=?", [role])
+        employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
+        self.disconnect()
+        return employee_list
+
+    def find_by_id(self, id):
+        self.connect()
+        self.cursor.execute("select * from employees where  id=?", [id])
+        employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
+        self.disconnect()
+        return employee_list
+
+    def get_all_employees(self):
+        self.connect()
+        self.cursor.execute("select * from employees")
+        employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
+        self.disconnect()
+        return employee_list
+
+    def find_by_username_and_password(self, username, password):
+        self.connect()
+        self.cursor.execute("select * from customers where username=? and password=?", [username, password])
+        employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
+        self.disconnect()
+        return employee_list
+
+    def reset_username_password(self, employee):
+        self.cursor.execute(
+            "update employee set username=?,password=?) where id=?",
+            [employee.username, employee.password])
+
+        self.connection.commit()
+        self.disconnect()
+        return employee
