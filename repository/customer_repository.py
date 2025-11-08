@@ -17,7 +17,7 @@ class Customer_repository:
 
     def add_customer(self, customer):
         self.cursor.execute("insert into customers(id,first_name,last_name,phone_number,order_id) values (?,?,?,?)",
-                            [customer.id, customer.first_name, customer.last_name, customer.phone_number,
+                            [ customer.first_name, customer.last_name, customer.phone_number,
                              customer.order_id])
 
         customer.id = self.cursor.lastrowid
