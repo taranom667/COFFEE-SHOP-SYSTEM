@@ -1,5 +1,5 @@
 import sqlite3
-from model.customer import *
+from model.customer import Customer
 
 
 class Customer_repository:

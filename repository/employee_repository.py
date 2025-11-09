@@ -2,15 +2,15 @@ import sqlite3
 from model.employee import Employee
 
 
+
 class Employee_repository:
 
     def __init__(self):
         self.cursor = None
         self.connection = None
-#COFFESHOPSYSTEM.sqlite
-    #database\COFFEESHOP_db
+
     def connect(self):
-        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -20,10 +20,9 @@ class Employee_repository:
     def save(self, employee):
         self.connect()
         self.cursor.execute(
-            "insert into employees(id,first_name, last_name,role,username,password,salary) values (?,?,?,?,?,?)",
+            "insert into employees(first_name, last_name,role,username,password,salary) values (?,?,?,?,?,?)",
             [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,
              employee.salary])
-
         employee.id = self.cursor.lastrowid
         self.connection.commit()
         self.disconnect()
@@ -43,7 +42,7 @@ class Employee_repository:
     def delete(self, employee):
         self.connect()
         self.cursor.execute(
-            "delete from employees where id=?", [id])
+            "delete from employees where id=?", [employee.id])
         self.connection.commit()
         self.disconnect()
         return employee
@@ -115,7 +114,7 @@ class Employee_repository:
         return employee_list
 
 
-
-employee1 = Employee("1","taranom","bagheri","manager","tari","slriuhf",98765)
-employee_r=Employee_repository()
-employee_r.save(employee1)
+employee1 = Employee("1", "taranom", "bagheri", "manager", "tari", "slriuhf", 98765)
+employee_r = Employee_repository()
+#employee_r.save(employee1)
+employee_r.delete(employee1)
