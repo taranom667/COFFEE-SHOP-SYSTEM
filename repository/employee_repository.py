@@ -1,6 +1,6 @@
 import sqlite3
 from model.employee import Employee
-
+from tools.employee_validator import phone_number_validator
 
 
 class Employee_repository:
@@ -20,9 +20,9 @@ class Employee_repository:
     def save(self, employee):
         self.connect()
         self.cursor.execute(
-            "insert into employees(first_name, last_name,role,username,password,salary) values (?,?,?,?,?,?)",
+            "insert into employees(first_name, last_name,role,username,password,salary,phone_number) values (?,?,?,?,?,?,?)",
             [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,
-             employee.salary])
+             employee.salary, employee.phone_number])
         employee.id = self.cursor.lastrowid
         self.connection.commit()
         self.disconnect()
@@ -31,9 +31,9 @@ class Employee_repository:
     def update(self, employee):
         self.connect()
         self.cursor.execute(
-            "update employees set first_name=?,last_name=?,role=?,username=?,password=?,salary=?) where id=?",
+            "update employees set first_name=?,last_name=?,role=?,username=?,password=?,salary=?,phone_number=?) where id=?",
             [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,
-             employee.salary, employee.id])
+             employee.salary,employee.phone_number, employee.id])
 
         self.connection.commit()
         self.disconnect()
@@ -45,7 +45,7 @@ class Employee_repository:
             "delete from employees where id=?", [employee.id])
         self.connection.commit()
         self.disconnect()
-        return employee
+
 
     def find_by_firstname_and_lastname(self, firstname, lastname):
         self.connect()
@@ -96,16 +96,6 @@ class Employee_repository:
         self.disconnect()
         return employee_list
 
-    def reset_username_password(self, employee):
-        self.connect()
-        self.cursor.execute(
-            "update employees set username=?,password=?) where id=?",
-            [employee.username, employee.password, employee.id])
-
-        self.connection.commit()
-        self.disconnect()
-        return employee
-
     def get_all(self):
         self.connect()
         self.cursor.execute("select * from employees")
@@ -114,7 +104,17 @@ class Employee_repository:
         return employee_list
 
 
-employee1 = Employee("1", "taranom", "bagheri", "manager", "tari", "slriuhf", 98765)
-employee_r = Employee_repository()
+#employee1 = Employee("8", "taranom", "bagheri", "manager", "tari", "slriuhf", 98765,9125214321)
+#employee_r = Employee_repository()
 #employee_r.save(employee1)
-employee_r.delete(employee1)
+#employee_r.delete(employee1)
+
+'''def reset_username_password(self, employee):
+       # self.connect()
+        #self.cursor.execute(
+          #  "update employees set username=?,password=?) where id=?",
+            #[employee.username, employee.password, employee.id])
+       
+        self.connection.commit()
+        self.disconnect()
+        return employee'''
