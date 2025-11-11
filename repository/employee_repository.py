@@ -1,7 +1,5 @@
 import sqlite3
 from model.employee import Employee
-from tools.employee_validator import phone_number_validator
-
 
 class Employee_repository:
 
@@ -10,7 +8,7 @@ class Employee_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -103,18 +101,10 @@ class Employee_repository:
         self.disconnect()
         return employee_list
 
-
-#employee1 = Employee("8", "taranom", "bagheri", "manager", "tari", "slriuhf", 98765,9125214321)
-#employee_r = Employee_repository()
-#employee_r.save(employee1)
+'''
+employee1 = Employee("0", "taranom", "bagheri", "manager", "tari", "tari123", 98765,9125214321)
+employee_r = Employee_repository()
+employee_r.save(employee1)
 #employee_r.delete(employee1)
+'''
 
-'''def reset_username_password(self, employee):
-       # self.connect()
-        #self.cursor.execute(
-          #  "update employees set username=?,password=?) where id=?",
-            #[employee.username, employee.password, employee.id])
-       
-        self.connection.commit()
-        self.disconnect()
-        return employee'''

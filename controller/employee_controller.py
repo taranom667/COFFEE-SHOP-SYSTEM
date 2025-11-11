@@ -1,6 +1,6 @@
 from model.employee import Employee
 from service.employee_service import Employee_Service
-#from tools.logging1 import Logger
+from tools.logging1 import Logger
 
 
 class Employee_Controller:

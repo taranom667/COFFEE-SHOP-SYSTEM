@@ -1,50 +1,55 @@
-from repository import OrderItemRepository
+from repository.customer_repository import Customer_repository
 
 
-class OrderItemService:
-    order_item_repository = OrderItemRepository()
-
-    @classmethod
-    def save(cls, order_item):
-        return cls.order_item_repository.save(order_item)
+class Customer_Service:
+    customer_repository = Customer_repository()
 
     @classmethod
-    def update(cls, order_item):
-        order_item_result = cls.order_item_repository.find_by_id(order_item.order_item_id)
-        if order_item_result:
-            return cls.order_item_repository.update(order_item)
+    def save(cls, customer):
+        return cls.customer_repository.save(customer)
+
+    @classmethod
+    def update(cls, customer):
+        return cls.customer_repository.update(customer)
+
+    @classmethod
+    def delete(cls, customer):
+        return cls.customer_repository.delete(customer)
+
+    @classmethod
+    def find_by_firstname_and_lastname(cls, firstname, lastname):
+        customer = cls.customer_repository.find_by_firstname_and_lastname(firstname, lastname)
+        if customer:
+            return customer
         else:
-            raise Exception("Order Item Not Found !!!")
+            raise ValueError("Customer not found")
 
     @classmethod
-    def delete(cls, order_item_id):
-        order_item = cls.order_item_repository.find_by_id(order_item_id)
-        if order_item:
-            cls.order_item_repository.delete(order_item_id)
-            return order_item
+    def find_by_phone_number(cls, phone_number):
+        customer = cls.customer_repository.find_by_phone_number(phone_number)
+        if customer:
+            return customer
         else:
-            raise Exception("Order Item Not Found !!!")
+            raise ValueError("Customer not found")
 
-    @classmethod
-    def find_all(cls):
-        return cls.order_item_repository.find_all()
-
-    @classmethod
-    def find_by_id(cls, order_item_id):
-        order_item = cls.order_item_repository.find_by_id(order_item_id)
-        if order_item:
-            return order_item
-        else:
-            raise Exception("Order Item Not Found !!!")
 
     @classmethod
     def find_by_order_id(cls, order_id):
-        return cls.order_item_repository.find_by_order_id(order_id)
+        customer = cls.customer_repository.find_by_order_id(order_id)
+        if customer:
+            return customer
+        else:
+            raise ValueError("Customer not found")
 
     @classmethod
-    def find_by_product_id(cls, product_id):
-        return cls.order_item_repository.find_by_product_id(product_id)
+    def find_by_id(cls, id):
+        customer = cls.customer_repository.find_by_id(id)
+        if customer:
+            return customer
+        else:
+            raise ValueError("Customer not found")
+
 
     @classmethod
-    def find_by_quantity_less_than(cls, quantity):
-        return cls.order_item_repository.find_by_quantity_less_than(quantity)
+    def get_all(cls):
+        return cls.customer_repository.get_all()

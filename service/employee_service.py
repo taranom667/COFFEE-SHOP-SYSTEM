@@ -1,6 +1,4 @@
-from repository import employee_repository
 from repository.employee_repository import Employee_repository
-from model.employee import Employee
 
 
 class Employee_Service:
@@ -73,16 +71,6 @@ class Employee_Service:
             return employee
         else:
             raise ValueError("Employee not found")
-
-    '''#reset_username_password
-    @classmethod
-    def find_by_reset_username_password(cls, employee):
-        employee = cls.employee_repository.reset_username_password(salary_min)
-        if employee:
-            return employee
-        else:
-            raise ValueError("Employee not found")
-    '''
 
     @classmethod
     def get_all(cls):

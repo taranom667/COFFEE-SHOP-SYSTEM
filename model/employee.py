@@ -8,6 +8,7 @@ class Employee:
      self.password=password
      self.salary=salary
      self.phone_number=phone_number
+
     def validate(self):
         pass
 
@@ -19,8 +20,5 @@ class Employee:
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
-
-
 
 

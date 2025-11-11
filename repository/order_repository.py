@@ -9,7 +9,7 @@ class Order_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -19,7 +19,7 @@ class Order_repository:
     def save(self, order):
         self.connect()
         self.cursor.execute(
-            "insert into orders(customer_name, dish, status, total_price, delivery_id, date_time) values (?,?,?,?,?,?)",
+            "insert into orders(id=none,customer_name,dish,status,total_price,delivery_id,date_time) values (?,?,?,?,?,?)",
             [order.customer_name, order.dish, order.status, order.total_price, order.delivery_id, order.date_time])
         order.id = self.cursor.lastrowid
         self.connection.commit()
@@ -29,7 +29,7 @@ class Order_repository:
     def update(self, order):
         self.connect()
         self.cursor.execute(
-            "update orders set customer_name=?, dish=?, status=?, total_price=?, delivery_id=?, date_time=?) where id=?",
+            "update orders set customer_name=?,dish=?,status=?,total_price=?,delivery_id=?,date_time=?) where id=?",
             [order.customer_name, order.dish, order.status, order.total_price, order.delivery_id, order.date_time])
 
         self.connection.commit()
@@ -42,11 +42,10 @@ class Order_repository:
             "delete from orders where id=?", [order.id])
         self.connection.commit()
         self.disconnect()
-        return order
 
-    def find_by_customer_name(self, customer_name):
+    def find_by_customer_name(self, customername):
         self.connect()
-        self.cursor.execute("select * from orders where first_name=? and last_name=?", [customer_name])
+        self.cursor.execute("select * from orders where customer_name=?", [customername])
         order_list = [Order(*order) for order in self.cursor.fetchall()]
         self.disconnect()
         return order_list
@@ -58,19 +57,13 @@ class Order_repository:
         self.disconnect()
         return order_list
 
-    def find_by_delivery_id(self, delivery_id):
+    def find_by_delivery_id(self, id):
         self.connect()
-        self.cursor.execute("select * from orders where  delivery_id=?", [delivery_id])
+        self.cursor.execute("select * from orders where  delivery_id=?", [id])
         order_list = [Order(*order) for order in self.cursor.fetchall()]
         self.disconnect()
         return order_list
 
-    def find_by_date_time(self, role):
-     #  self.cursor.execute("select * from orders where  role=?", [role])
-       # order_list = [Order(*order) for order in self.cursor.fetchall()]
-      #  self.disconnect()
-      #  return order_list
-            pass
     def find_by_id(self, id):
         self.connect()
         self.cursor.execute("select * from orders where  id=?", [id])
@@ -78,11 +71,26 @@ class Order_repository:
         self.disconnect()
         return order_list
 
-
-
     def get_all(self):
         self.connect()
         self.cursor.execute("select * from orders")
         order_list = [Order(*order) for order in self.cursor.fetchall()]
         self.disconnect()
         return order_list
+
+
+'''
+    def find_by_date_time(self, role):
+        self.connect()
+        self.cursor.execute("select * from orders where  role=?", [role])
+        order_list = [Order(*order) for order in self.cursor.fetchall()]
+        self.disconnect()
+        return order_list
+'''
+'''
+order1 = Order("0", "taranom", "bagheri", "manager", "tari", "tari123", 98765,9125214321)
+order_r = Order_repository()
+order_r.save(order1)
+#order_r.delete(order1)
+
+'''

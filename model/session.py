@@ -1,9 +1,13 @@
+from model.employee import Employee
+
+
 class Session:
     employee=None
     customer = None
     order = None
     dish = []
     payment = None
+
 
     @classmethod
     def add_order_item(cls, order_item):

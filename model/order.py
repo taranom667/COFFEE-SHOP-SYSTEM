@@ -1,6 +1,3 @@
-from customer import Customer
-from dish import Dish
-from payment import Payment
 
 
 class Order:

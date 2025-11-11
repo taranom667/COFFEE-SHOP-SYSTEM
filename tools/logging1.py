@@ -1,4 +1,4 @@
-'''# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import logging
 import sys
 
@@ -8,7 +8,7 @@ class Logger:
         format="%(asctime)s - %(levelname)5s - %(message)s",
         encoding="UTF-8",
         handlers=[
-             logging.FileHandler("Desktop/logging.log"),
+            # logging.FileHandler("d:/logging.log"),
             logging.StreamHandler(sys.stdout)
         ]
     )
@@ -20,4 +20,4 @@ class Logger:
     @staticmethod
     def error(message):
         logging.error(message)
-'''
+
