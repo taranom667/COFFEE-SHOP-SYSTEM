@@ -1,3 +1,4 @@
+from Demos.win32ts_logoff_disconnected import username
 from PIL import Image, ImageTk
 from tkinter import *
 from tkinter import messagebox
@@ -29,7 +30,8 @@ class LoginView:
         Label(self.window, text="Welcome!", font=("Times New Roman", 40, "italic"), fg="DodgerBlue4").place(x=30, y=70)
         self.username = LabelWithEntry(self.window, "Username", 50, 200)
         self.password = LabelWithEntry(self.window, "Password", 50, 250)
-
+        self.username.set("tari")
+        self.password.set("tari123")
         Button(self.window, text="Login", width=8, font=("Arial", 14), bg="DodgerBlue4", command=self.login).place(
             x=140, y=300,
             width=100,
@@ -44,8 +46,8 @@ class LoginView:
         if status:
             print(employee)
             self.window.destroy()
-            Session.employee = employee.to_tuple()
-            dash_role = Session.employee[0]["role"]
+            Session.employee = employee
+            dash_role = Session.employee[0].role
             if dash_role == "chef":
                 chef_dashboard()
             elif dash_role == "manager":
