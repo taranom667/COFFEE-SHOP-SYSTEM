@@ -1,36 +1,34 @@
-from  view.dashboards.DashboardView import *
+from view.dashboards.DashboardView import *
+from view.dashboards.Employee_Manager_Panel import Employee_manager
+from view.dashboards.Menu_Panel import Menu
+from view.dashboards.Financial_Management_Panel import Financial_management
+
+
 class manager_dashboard():
     def __init__(self):
         self.window = Tk()
-        self.window.geometry("700x700")
         self.window.title("manager panel")
         self.window.configure(bg="#efefef")
-        self.window.geometry("700x700")
+        self.window.geometry("400x400")
 
         Label(self.window, text="Management", font=("Times New Roman", 40, "italic"), fg="Black").place(x=30, y=70)
 
-        Button(self.window, text="Employees", width=8, font=("Arial", 14), bg="DodgerBlue4").place(
-            x=140, y=300,
-            width=100,
-            height=35
+        btn1 = Button(self.window, text="Employees", width=8, font=("Arial", 14), bg="DodgerBlue4",
+                      command=self.employee_managerpanel)
+        btn1.place(x=20, y=150, width=200, height=40)
 
-        Button(self.window, text="menu", width=8, font=("Arial", 14), bg="DodgerBlue4").place(
-            x=140, y=300,
-            width=100,
-            height=35)
+        btn2 = Button(self.window, text="menu", width=8, font=("Arial", 14), bg="DodgerBlue4", command=self.menu)
+        btn2.place(x=20, y=200, width=200, height=40)
 
-        Button(self.window, text="inventory", width=8, font=("Arial", 14), bg="DodgerBlue4").place(
-            x=140, y=300,
-            width=100,
-            height=35)
+        btn3 = Button(self.window, text="Financial_Managment", width=8, font=("Arial", 12), bg="DodgerBlue4",
+                      command=self.financial_management)
+        btn3.place(x=20, y=250, width=200, height=40)
 
-        Button(self.window, text="Financial_Managment", width=8, font=("Arial", 14), bg="DodgerBlue4").place(
-            x=140, y=300,
-            width=100,
-            height=35)
+    def employee_managerpanel(self):
+        Employee_manager()
 
-        Button(self.window, text="", width=8, font=("Arial", 14), bg="DodgerBlue4").place(
-            x=140, y=300,
-            width=100,
-            height=35)
-        self.window.mainloop()
+    def menu(self):
+        Menu()
+
+    def financial_management(self):
+        Financial_management()

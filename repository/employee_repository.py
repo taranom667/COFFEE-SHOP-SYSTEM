@@ -37,10 +37,10 @@ class Employee_repository:
         self.disconnect()
         return employee
 
-    def delete(self, employee):
+    def delete(self,id):
         self.connect()
         self.cursor.execute(
-            "delete from employees where id=?", [employee.id])
+            "delete from employees where id=?", [id])
         self.connection.commit()
         self.disconnect()
 
@@ -105,7 +105,7 @@ class Employee_repository:
 
 employee_r.save(employee1)
 #
-'''
+
 employee1 = Employee("11", "taranom", "bagheri", "manager", "tari", "tari123", 98765,9125214321)
 employee_r = Employee_repository()
-employee_r.delete(employee1)
+employee_r.delete(employee1)'''

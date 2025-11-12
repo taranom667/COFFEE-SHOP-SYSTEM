@@ -10,11 +10,20 @@ class Employee_Service:
 
     @classmethod
     def update(cls, employee):
-        return cls.employee_repository.update(employee)
+            employee_result = cls.employee_repository.find_by_id(employee.id)
+            if employee_result:
+                return cls.employee_repository.update(employee)
+            else:
+                raise Exception("Employee Not Found !!!")
 
     @classmethod
-    def delete(cls, employee):
-        return cls.employee_repository.delete(employee)
+    def delete(cls, id):
+        employee = cls.employee_repository.find_by_id(id)
+        if employee:
+            cls.employee_repository.delete(id)
+            return employee
+        else:
+            raise Exception("Employee Not Found !!!")
 
     @classmethod
     def find_by_firstname_and_lastname(cls, firstname, lastname):

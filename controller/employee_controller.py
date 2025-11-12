@@ -5,9 +5,9 @@ from tools.logging1 import Logger
 
 class Employee_Controller:
     @classmethod
-    def save(cls, first_name, last_name,role,phone_number,username,password,salary):
+    def save(cls, first_name, last_name,role,username,password,salary,phone_number):
         try:
-            employee = Employee(None,first_name, last_name,role,phone_number,username,password,salary)
+            employee = Employee(None,first_name, last_name,role,username,password,salary,phone_number)
             employee.validate()
             employee =Employee_Service.save(employee)
             Logger.info(f"Employee {employee} saved")
@@ -17,9 +17,9 @@ class Employee_Controller:
             return False, e
 
     @classmethod
-    def update(cls, employee_id, first_name, last_name, salary, occupation, phone_number, username, password, role):
+    def update(cls,id, first_name, last_name,role,username,password,salary,phone_number):
         try:
-            employee = Employee(employee_id, first_name, last_name, salary, occupation, phone_number, username, password, role)
+            employee = Employee(id,first_name, last_name,role,username,password,salary,phone_number)
             employee.validate()
             employee =Employee_Service.update(employee)
             Logger.info(f"Employee {employee} updated")
@@ -29,9 +29,9 @@ class Employee_Controller:
             return False, e
 
     @classmethod
-    def delete(cls, employee_id):
+    def delete(cls,id):
         try:
-            employee =Employee_Service.delete(employee_id)
+            employee =Employee_Service.delete(id)
             Logger.info(f"Employee {employee} deleted")
             return True, f"Employee Deleted Successfully"
         except Exception as e:
