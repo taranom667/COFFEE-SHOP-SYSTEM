@@ -102,9 +102,10 @@ class Employee_repository:
         return employee_list
 
 '''
-employee1 = Employee("0", "taranom", "bagheri", "manager", "tari", "tari123", 98765,9125214321)
-employee_r = Employee_repository()
-employee_r.save(employee1)
-#employee_r.delete(employee1)
-'''
 
+employee_r.save(employee1)
+#
+'''
+employee1 = Employee("11", "taranom", "bagheri", "manager", "tari", "tari123", 98765,9125214321)
+employee_r = Employee_repository()
+employee_r.delete(employee1)

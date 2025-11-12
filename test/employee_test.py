@@ -6,7 +6,7 @@ import sqlite3
 
 
 
-employee1 = Employee("1","taranom","bagheri","manager","tari","slriuhf",98765)
+employee1 = Employee("13","taranom","bagheri","manager","tari","slriuhf",98765)
 employee_r=Employee_repository()
 employee_r.delete(employee1)
 

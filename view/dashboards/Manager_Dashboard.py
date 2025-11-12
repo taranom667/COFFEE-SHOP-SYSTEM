@@ -4,3 +4,4 @@ class manager_dashboard(Dashboardview):
         Dashboardview.__init__(self)
         self.window = Tk()
         self.window.geometry("100x100")
+        self.window.mainloop()
