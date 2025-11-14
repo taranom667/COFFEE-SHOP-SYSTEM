@@ -9,7 +9,7 @@ class Customer_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -19,7 +19,7 @@ class Customer_repository:
     def save(self, customer):
         self.connect()
         self.cursor.execute(
-            "insert into customers(id=None,first_name, last_name,phone_number,order_id) values (?,?,?,?)",
+            "insert into customers(first_name, last_name,phone_number,order_id) values (?,?,?,?)",
             [customer.first_name, customer.last_name, customer.phone_number, customer.order_id])
         customer.id = self.cursor.lastrowid
         self.connection.commit()
@@ -29,7 +29,7 @@ class Customer_repository:
     def update(self, customer):
         self.connect()
         self.cursor.execute(
-            "update customers set first_name=?,last_name=?,phone_number=?,order_id=?) where id=?",
+            "update customers set first_name=?,last_name=?,phone_number=?,order_id=? where id=?",
             [customer.first_name, customer.last_name, customer.phone_number, customer.order_id, customer.id])
 
         self.connection.commit()

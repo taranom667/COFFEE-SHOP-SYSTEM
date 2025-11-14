@@ -1,3 +1,4 @@
+from tools.employee_validator import *
 class Employee:
     def __init__(self,id,first_name, last_name,role,username,password,salary,phone_number):
      self.id = id
@@ -10,7 +11,14 @@ class Employee:
      self.phone_number=phone_number
 
     def validate(self):
-        pass
+      first_name_validator(self.first_name)
+      last_name_validator(self.last_name)
+      role_validator(self.role)
+      username_validator(self.username)
+      password_validator(self.password)
+      salary_validator(self.salary)
+      phone_number_validator(self.phone_number)
+
 
     def __repr__(self):
         return f"{self.__dict__}"

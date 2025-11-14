@@ -9,7 +9,7 @@ class Dish_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -19,7 +19,7 @@ class Dish_repository:
     def save(self, dish):
         self.connect()
         self.cursor.execute(
-            "insert into dishes(id=None,name,quantity,price,category,available,ingredients) values (?,?,?,?,?,?)",
+            "insert into dishes(name,quantity,price,category,available,ingredients) values (?,?,?,?,?,?)",
             [dish.name, dish.quantity, dish.price,dish.category, dish.available, dish.ingredients])
         dish.id = self.cursor.lastrowid
         self.connection.commit()
@@ -29,8 +29,8 @@ class Dish_repository:
     def update(self, dish):
         self.connect()
         self.cursor.execute(
-            "update dishes set name=?,quantity=?,price=?,category=?,available=?,ingredients=?) where id=?",
-            [dish.name,dish.quatity,dish.price,dish.category,dish.available,dish.ingredients,dish.id])
+            "update dishes set name=?,quantity=?,price=?,category=?,available=?,ingredients=? where id=?",
+            [dish.name,dish.quantity,dish.price,dish.category,dish.available,dish.ingredients,dish.id])
 
         self.connection.commit()
         self.disconnect()
@@ -82,9 +82,3 @@ class Dish_repository:
         return dish_list
 
 
-'''
-dish1 = Dish("0", "taranom", "bagheri", "manager", "tari", "tari123", 98765,9125214321)
-dish_r = Dish_repository()
-dish_r.save(dish1)
-#dish_r.delete(dish1)
-'''

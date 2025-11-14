@@ -1,3 +1,4 @@
+from tools.rawmaterial_validator import  *
 class Raw_material:
     def __init__(self, id, name, category, unit, quantity, price, purchase_date, expiry_date, location):
         self.id = id
@@ -10,26 +11,17 @@ class Raw_material:
         self.expiry_date = expiry_date
         self.location = location
 
-        def update_quantity(amount):
-            pass
+    def validate(self):
+            name_validator(self.name)
+            category_validator(self.category)
+            unit_validator(self.unit)
+            price_validator(self.price)
+            quantity_validator(self.quantity)
+            price_validator(self.price)
+            location_validator(self.location)
 
-        def is_expired(current_date):
-            pass
-
-        def days_to_expiry(current_date):
-            pass
-
-        def get_total_value():
-            pass
-
-        def display_info():
-            pass
-
-        def validate(self):
-            pass
-
-        def __repr__(self):
+    def __repr__(self):
             return f"{self.__dict__}"
 
-        def to_tuple(self):
+    def to_tuple(self):
             return tuple((self.id, self.name, self.category, self.unit, self.quantity,self.price, self.purchase_date, self.expiry_date, self.location))

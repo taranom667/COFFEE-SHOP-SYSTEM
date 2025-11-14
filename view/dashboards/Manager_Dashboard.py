@@ -25,7 +25,7 @@ class manager_dashboard():
         btn3.place(x=20, y=250, width=200, height=40)
 
     def employee_managerpanel(self):
-        Employee_manager()
+         Employee_manager()
 
     def menu(self):
         Menu()

@@ -19,7 +19,7 @@ class Payment_repository:
     def save(self, payment):
         self.connect()
         self.cursor.execute(
-            "insert into payments(id=None,order_id, total_price, payment_type, date_time, customer_id, status, factor_id) values (?,?,?,?,?,?,?)",
+            "insert into payments(order_id, total_price, payment_type, date_time, customer_id, status, factor_id) values (?,?,?,?,?,?,?)",
             [payment.order_id, payment.total_price.payment_type, payment.date_time, payment.customer_id, payment.status,
              payment.factor_id])
         payment.id = self.cursor.lastrowid
@@ -30,7 +30,7 @@ class Payment_repository:
     def update(self, payment):
         self.connect()
         self.cursor.execute(
-            "update payments set order_id=?, total_price=?, payment_type=?, date_time=?, customer_id=?, status=?, factor_id=?) where id=?",
+            "update payments set order_id=?, total_price=?, payment_type=?, date_time=?, customer_id=?, status=?, factor_id=? where id=?",
             [payment.order_id, payment.total_price, payment.customer_id, payment.status, payment.factor_id])
 
         self.connection.commit()

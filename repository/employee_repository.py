@@ -1,4 +1,8 @@
 import sqlite3
+from logging import exception
+
+from fontTools.misc.cython import returns
+
 from model.employee import Employee
 
 class Employee_repository:
@@ -29,9 +33,9 @@ class Employee_repository:
     def update(self, employee):
         self.connect()
         self.cursor.execute(
-            "update employees set first_name=?,last_name=?,role=?,username=?,password=?,salary=?,phone_number=?) where id=?",
-            [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,
-             employee.salary,employee.phone_number, employee.id])
+            "update employees set first_name=?,last_name=?,role=?,username=?,password=?,salary=?,phone_number=? where id=?",
+            [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,employee.salary,employee.phone_number, employee.id])
+
 
         self.connection.commit()
         self.disconnect()

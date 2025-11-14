@@ -19,7 +19,7 @@ class Raw_material_repository:
     def save(self, raw_material):
         self.connect()
         self.cursor.execute(
-            "insert into Raw_materials(id=None ,name, category, unit, quantity, price, purchase_date, expiry_date, location) values (?,?,?,?,?,?,?,?)",
+            "insert into Raw_materials(name, category, unit, quantity, price, purchase_date, expiry_date, location) values (?,?,?,?,?,?,?,?)",
             [raw_material.name,raw_material.category,raw_material.unit,raw_material.quantity,raw_material.purchase_date,raw_material.expiry_date,raw_material.location])
         raw_material.id = self.cursor.lastrowid
         self.connection.commit()
@@ -29,7 +29,7 @@ class Raw_material_repository:
     def update(self, raw_material):
         self.connect()
         self.cursor.execute(
-            "update Raw_materials set first_name=?,last_name=?,role=?,username=?,password=?,salary=?) where id=?",
+            "update Raw_materials set first_name=?,last_name=?,role=?,username=?,password=?,salary=? where id=?",
             [raw_material.first_name, raw_material.last_name, raw_material.role, raw_material.username, raw_material.password,
              raw_material.salary, raw_material.id])
 

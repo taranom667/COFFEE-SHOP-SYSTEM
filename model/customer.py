@@ -1,3 +1,4 @@
+from tools.customer_validator import *
 class Customer:
     def __init__(self, id, first_name, last_name, phone_number, order_id):
         self.id = id
@@ -7,7 +8,9 @@ class Customer:
         self.order_id = order_id
 
     def validate(self):
-        pass
+        first_name_validator(self.first_name)
+        last_name_validator(self.last_name)
+        phone_number_validator(self.phone_number)
 
     def __repr__(self):
         return f"{self.__dict__}"

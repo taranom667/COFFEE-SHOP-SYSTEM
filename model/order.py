@@ -1,5 +1,5 @@
 
-
+from tools.order_validator import  *
 class Order:
     def __init__(self, id, customer_name, dish, status, total_price, delivery_id, date_time):
         self.id = id
@@ -13,14 +13,6 @@ class Order:
     def order_registration(self):
         pass
 
-    def add_item(self):
-        pass
-
-    def delete_item(self):
-        pass
-
-    def edit(self):
-        pass
 
     def calculate_total_price(self):
         pass
@@ -29,7 +21,10 @@ class Order:
         pass
 
     def validate(self):
-        pass
+        customer_name_validator(self.customer_name)
+        status_validator(self.status)
+        total_price_validator(self.total_price)
+
 
     def __repr__(self):
         return f"{self.__dict__}"

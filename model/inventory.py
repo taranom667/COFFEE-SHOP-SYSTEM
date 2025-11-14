@@ -1,3 +1,7 @@
+from tools.dish_validator import name_validator
+from tools.inventory_validator import location_validator, capacity_validator
+
+
 class Inventory:
     def __init__(self, id, name, material, manager, location, capacity):
         self.id = id
@@ -6,6 +10,12 @@ class Inventory:
         self.manager = manager
         self.location = location
         self.capacity = capacity
+    def validate(self):
+        name_validator(self.name)
+        location_validator(self.location)
+        capacity_validator(self.capacity)
+
+
 
     def add_material(self, material):
         pass
@@ -31,8 +41,7 @@ class Inventory:
     def generate_report(Inventory_id):
         pass
 
-    def validate(self):
-        pass
+
 
     def __repr__(self):
         return f"{self.__dict__}"

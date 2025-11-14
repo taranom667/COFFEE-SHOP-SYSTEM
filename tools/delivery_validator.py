@@ -1,5 +1,4 @@
 import re
-#first_name, last_name,role,username,password,salary):
 
 def rider_validator(first_name):
     if not(type(first_name) == str and re.match(r"^[a-z\s]{2,30}$",first_name)):

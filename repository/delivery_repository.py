@@ -9,7 +9,7 @@ class Delivery_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -19,7 +19,7 @@ class Delivery_repository:
     def save(self, delivery):
         self.connect()
         self.cursor.execute(
-            "insert into deliveries(id=None,order_id,rider,status,address) values (?,?,?,?)",
+            "insert into deliveries(order_id,rider,status,address) values (?,?,?,?)",
             [delivery.order_id, delivery.rider, delivery.status, delivery.address])
         delivery.id = self.cursor.lastrowid
         self.connection.commit()
@@ -29,8 +29,8 @@ class Delivery_repository:
     def update(self, delivery):
         self.connect()
         self.cursor.execute(
-            "update deliveries set order_id=?,rider=?,status=?,address=?) where id=?",
-            [delivery.order_id, delivery.rider, delivery.status, delivery.address,delivery.id])
+            "update deliveries set order_id=?,rider=?,status=?,address=? where id=?",
+            [delivery.order_id, delivery.rider, delivery.status, delivery.address, delivery.id])
 
         self.connection.commit()
         self.disconnect()
@@ -43,7 +43,7 @@ class Delivery_repository:
         self.connection.commit()
         self.disconnect()
 
-    def find_by_rider(self,rider):
+    def find_by_rider(self, rider):
         self.connect()
         self.cursor.execute("select * from deliveries where rider=?", [rider])
         delivery_list = [Delivery(*delivery) for delivery in self.cursor.fetchall()]
@@ -64,7 +64,6 @@ class Delivery_repository:
         self.disconnect()
         return delivery_list
 
-
     def find_by_id(self, id):
         self.connect()
         self.cursor.execute("select * from deliveries where  id=?", [id])
@@ -72,10 +71,16 @@ class Delivery_repository:
         self.disconnect()
         return delivery_list
 
-
     def get_all(self):
         self.connect()
         self.cursor.execute("select * from deliveries")
+        delivery_list = [Delivery(*delivery) for delivery in self.cursor.fetchall()]
+        self.disconnect()
+        return delivery_list
+
+    def find_by_order_id(self, id):
+        self.connect()
+        self.cursor.execute("select * from customers where  order_id=?", [id])
         delivery_list = [Delivery(*delivery) for delivery in self.cursor.fetchall()]
         self.disconnect()
         return delivery_list

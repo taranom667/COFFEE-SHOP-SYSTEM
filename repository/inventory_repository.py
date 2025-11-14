@@ -9,7 +9,7 @@ class Inventory_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -19,7 +19,7 @@ class Inventory_repository:
     def save(self, inventory):
         self.connect()
         self.cursor.execute(
-            "insert into inventories(id=None,name,material,manager,location,capacity) values (?,?,?,?,?)",
+            "insert into inventories(name,material,manager,location,capacity) values (?,?,?,?,?)",
             [inventory.name,inventory.material,inventory.manager,inventory.location,inventory.capacity])
         inventory.id = self.cursor.lastrowid
         self.connection.commit()
@@ -29,7 +29,7 @@ class Inventory_repository:
     def update(self, inventory):
         self.connect()
         self.cursor.execute(
-            "update inventories set name=?,material=?,manager=?,location=?,capacity=?) where id=?",
+            "update inventories set name=?,material=?,manager=?,location=?,capacity=? where id=?",
             [inventory.name,inventory.material,inventory.manager,inventory.location,inventory.capacity,inventory.id])
 
         self.connection.commit()

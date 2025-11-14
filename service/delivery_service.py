@@ -25,14 +25,12 @@ class Delivery_Service:
             raise ValueError("Delivery not found")
 
     @classmethod
-    def find_by_status(cls,status):
+    def find_by_status(cls, status):
         delivery = cls.delivery_repository.find_by_status(status)
         if delivery:
             return delivery
         else:
             raise ValueError("Delivery not found")
-
-
 
     @classmethod
     def find_by_order_id(cls, order_id):
@@ -49,7 +47,6 @@ class Delivery_Service:
             return delivery
         else:
             raise ValueError("Delivery not found")
-
 
     @classmethod
     def get_all(cls):

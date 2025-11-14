@@ -1,3 +1,4 @@
+from  tools.payment_validator import  *
 class Payment:
     def __init__(self, id, order_id, total_price, payment_type, date_time, customer_id, status, factor_id):
         self.id = id
@@ -10,7 +11,10 @@ class Payment:
         self.factor_id = factor_id
 
     def validate(self):
-        pass
+        total_price_validator(self.total_price)
+        payment_type_validator(self.payment_type)
+        status_validator(self.status)
+
 
     def __repr__(self):
         return f"{self.__dict__}"
