@@ -1,7 +1,9 @@
+from model.inventory import Inventory
 from view.dashboards.DashboardView import *
 from view.dashboards.Employee_Manager_Panel import Employee_manager
 from view.dashboards.Menu_Panel import Menu
 from view.dashboards.Financial_Management_Panel import Financial_management
+from view.dashboards.Inventory_Management_Panel import Inventory_management
 
 
 class manager_dashboard():
@@ -24,11 +26,18 @@ class manager_dashboard():
                       command=self.financial_management)
         btn3.place(x=20, y=250, width=200, height=40)
 
+        btn4 = Button(self.window, text="Inventory", width=8, font=("Arial", 12), bg="DodgerBlue4",
+                      command=self.Inventory_management)
+        btn4.place(x=20, y=230, width=200, height=40)
+
     def employee_managerpanel(self):
-         Employee_manager()
+        Employee_manager()
 
     def menu(self):
         Menu()
 
     def financial_management(self):
         Financial_management()
+
+    def inventory_management(self):
+        Inventory_management()

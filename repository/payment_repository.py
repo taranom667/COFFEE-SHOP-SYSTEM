@@ -31,7 +31,7 @@ class Payment_repository:
         self.connect()
         self.cursor.execute(
             "update payments set order_id=?, total_price=?, payment_type=?, date_time=?, customer_id=?, status=?, factor_id=? where id=?",
-            [payment.order_id, payment.total_price, payment.customer_id, payment.status, payment.factor_id])
+            [payment.order_id, payment.total_price, payment.customer_id, payment.status, payment.factor_id,payment.id])
 
         self.connection.commit()
         self.disconnect()

@@ -5,6 +5,7 @@ from fontTools.misc.cython import returns
 
 from model.employee import Employee
 
+
 class Employee_repository:
 
     def __init__(self):
@@ -34,20 +35,19 @@ class Employee_repository:
         self.connect()
         self.cursor.execute(
             "update employees set first_name=?,last_name=?,role=?,username=?,password=?,salary=?,phone_number=? where id=?",
-            [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,employee.salary,employee.phone_number, employee.id])
-
+            [employee.first_name, employee.last_name, employee.role, employee.username, employee.password,
+             employee.salary, employee.phone_number, employee.id])
 
         self.connection.commit()
         self.disconnect()
         return employee
 
-    def delete(self,id):
+    def delete(self, id):
         self.connect()
         self.cursor.execute(
             "delete from employees where id=?", [id])
         self.connection.commit()
         self.disconnect()
-
 
     def find_by_firstname_and_lastname(self, firstname, lastname):
         self.connect()
@@ -104,6 +104,7 @@ class Employee_repository:
         employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
         self.disconnect()
         return employee_list
+
 
 '''
 

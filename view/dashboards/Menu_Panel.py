@@ -10,7 +10,7 @@ class Menu(Panel):
     def __init__(self):
         self.window = Tk()
         self.window.title("menu")
-        self.window.geometry("1060x440")
+        self.window.geometry("1060x470")
         self.window.configure(background="#d9d9d9")
 
         self.id = LabelWithEntry(self.window, "Id", 20, 20, state="readonly")

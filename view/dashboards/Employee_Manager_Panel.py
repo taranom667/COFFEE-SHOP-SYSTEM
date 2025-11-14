@@ -40,8 +40,7 @@ class Employee_manager(Panel):
     def save_click(self):
         status, message = Employee_Controller.save(self.first_name.get(), self.last_name.get(), self.role.get(),
                                                    self.username.get(),
-                                                   self.password.get(), self.salary.get(), self.phone_number.get(),
-                                                   )
+                                                   self.password.get(), self.salary.get(), self.phone_number.get())
         if status:
             messagebox.showinfo("Employee Save", message)
             self.reset_form()

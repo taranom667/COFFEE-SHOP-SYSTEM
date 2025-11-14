@@ -14,7 +14,7 @@ class Order_Service:
 
     @classmethod
     def delete(cls, order):
-        return cls.order_repository.delete(order)
+        return cls.order_repository.find_by_id(order)
 
     @classmethod
     def find_by_customer_name(cls, name):

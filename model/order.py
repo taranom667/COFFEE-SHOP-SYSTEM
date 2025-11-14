@@ -21,13 +21,14 @@ class Order:
         pass
 
     def validate(self):
-        customer_name_validator(self.customer_name)
-        status_validator(self.status)
-        total_price_validator(self.total_price)
+         pass
 
 
     def __repr__(self):
         return f"{self.__dict__}"
 
     def to_tuple(self):
-        return tuple((self.id, self.customer_name, self.dish, self.status, self.total_price, self.delivery, self.date_time))
+        return tuple((self.id, self.customer_name, self.dish, self.status, self.total_price, self.delivery_id, self.date_time))
+''' customer_name_validator(self.customer_name)
+        status_validator(self.status)
+        total_price_validator(self.total_price)'''

@@ -30,8 +30,8 @@ class LoginView:
         Label(self.window, text="Welcome!", font=("Times New Roman", 40, "italic"), fg="DodgerBlue4").place(x=30, y=70)
         self.username = LabelWithEntry(self.window, "Username", 50, 200)
         self.password = LabelWithEntry(self.window, "Password", 50, 250)
-        self.username.set("tari")
-        self.password.set("tari123")
+        self.username.set("adrina144")
+        self.password.set("adr76")
         Button(self.window, text="Login", width=8, font=("Arial", 14), bg="DodgerBlue4", command=self.login).place(
             x=140, y=300,
             width=100,

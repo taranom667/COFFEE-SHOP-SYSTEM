@@ -30,7 +30,7 @@ class Order_repository:
         self.connect()
         self.cursor.execute(
             "update orders set customer_name=?,dish=?,status=?,total_price=?,delivery_id=?,date_time=? where id=?",
-            [order.customer_name, order.dish, order.status, order.total_price, order.delivery_id, order.date_time])
+            [order.customer_name, order.dish, order.status, order.total_price, order.delivery_id, order.date_time, order.id])
 
         self.connection.commit()
         self.disconnect()
@@ -89,10 +89,6 @@ class Order_repository:
         self.disconnect()
         return order_list
 '''
-'''
-order1 = Order("0", "taranom", "bagheri", "manager", "tari", "tari123", 98765,9125214321)
-order_r = Order_repository()
-order_r.save(order1)
-#order_r.delete(order1)
 
-'''
+
+
