@@ -10,14 +10,14 @@ class Employee:
      self.salary=salary
      self.phone_number=phone_number
 
-    def validate(self):
+    '''def validate(self):
       first_name_validator(self.first_name)
       last_name_validator(self.last_name)
       role_validator(self.role)
       username_validator(self.username)
       password_validator(self.password)
       salary_validator(self.salary)
-      phone_number_validator(self.phone_number)
+      phone_number_validator(self.phone_number)'''
 
 
     def __repr__(self):

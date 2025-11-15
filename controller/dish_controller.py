@@ -8,7 +8,7 @@ class Dish_Controller:
     def save(cls, name,quantity,price,category,available,ingredients):
         try:
             dish = Dish(None,name,quantity,price,category,available,ingredients)
-            dish.validate()
+            #dish.validate()
             dish =Dish_Service.save(dish)
             Logger.info(f"Dish {dish} saved")
             return True, f"Dish Saved Successfully"
@@ -20,7 +20,7 @@ class Dish_Controller:
     def update(cls,id,name,quantity,price,category,available,ingredients):
         try:
             dish = Dish(id,name,quantity,price,category,available,ingredients)
-            dish.validate()
+            #dish.validate()
             dish =Dish_Service.update(dish)
             Logger.info(f"Dish {dish} updated")
             return True, "Dish Updated Successfully"

@@ -11,14 +11,14 @@ class Raw_material:
         self.expiry_date = expiry_date
         self.location = location
 
-    def validate(self):
+    '''def validate(self):
             name_validator(self.name)
             category_validator(self.category)
             unit_validator(self.unit)
             price_validator(self.price)
             quantity_validator(self.quantity)
             price_validator(self.price)
-            location_validator(self.location)
+            location_validator(self.location)'''
 
     def __repr__(self):
             return f"{self.__dict__}"

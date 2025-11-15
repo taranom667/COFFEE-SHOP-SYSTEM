@@ -10,9 +10,16 @@ class Order_panel(Panel):
     def __init__(self):
         self.window = Tk()
         self.window.title("menu")
-        self.window.geometry("1060x670")
+        self.window.geometry("1060x520")
         self.window.configure(background="#d9d9d9")
 
+        self.table = Table(self.window,
+                           ["Id", "Customer Name", "dish", "Status", "Total Price", "Delivery ID", "Date Time"],
+                           [40, 100, 120, 100, 100, 80, 100],
+                           270, 20,
+                           16,
+                           self.select_from_table)
+        #if dash_role == "chef":
         self.id = LabelWithEntry(self.window, "ID", 20, 20, state="readonly")
         self.customer_name = LabelWithEntry(self.window, "CustomerName", 20, 60)
         self.dish = LabelWithEntry(self.window, "dish", 20, 100)
@@ -21,12 +28,7 @@ class Order_panel(Panel):
         self.delivery_id = LabelWithEntry(self.window, "Delivery ID", 20, 220, data_type=IntVar)
         self.date_time = LabelWithEntry(self.window, "Date Time", 20, 260)
 
-        self.table = Table(self.window,
-                           ["Id", "Customer Name", "dish", "Status", "Total Price", "Delivery ID", "Date Time"],
-                           [40, 100, 120, 100, 100, 80, 100],
-                           270, 20,
-                           16,
-                           self.select_from_table)
+
 
         Button(self.window, text="Select order", width=19, command=self.select_order).place(x=20, y=380)
         Button(self.window, text="Refresh", width=7, command=self.refresh).place(x=180, y=380)
@@ -34,6 +36,7 @@ class Order_panel(Panel):
         Button(self.window, text="Edit", width=7, command=self.edit_click).place(x=100, y=420)
         Button(self.window, text="Delete", width=7, command=self.delete_click).place(x=180, y=420)
         self.reset_form()
+
         self.window.mainloop()
 
     def save_click(self):

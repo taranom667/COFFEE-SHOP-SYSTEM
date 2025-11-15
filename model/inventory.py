@@ -10,10 +10,10 @@ class Inventory:
         self.manager = manager
         self.location = location
         self.capacity = capacity
-    def validate(self):
+    '''def validate(self):
         name_validator(self.name)
         location_validator(self.location)
-        capacity_validator(self.capacity)
+        capacity_validator(self.capacity)'''
 
 
 

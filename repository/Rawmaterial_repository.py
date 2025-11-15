@@ -1,5 +1,5 @@
 import sqlite3
-from model.rawmaterial import Raw_material
+from model.raw_material import Raw_material
 
 
 class Raw_material_repository:

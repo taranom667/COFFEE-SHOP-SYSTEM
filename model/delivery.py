@@ -15,10 +15,10 @@ class Delivery():
     def update_status(delivery, new_status):
         delivery.status = new_status
 
-    def validate(self):
+    '''def validate(self):
         rider_validator(self.rider)
         status_validator(self.status)
-        address_validator(self.address)
+        address_validator(self.address)'''
 
     def __repr__(self):
         return f"{self.__dict__}"

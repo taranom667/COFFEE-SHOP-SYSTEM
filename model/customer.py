@@ -7,10 +7,10 @@ class Customer:
         self.phone_number = phone_number
         self.order_id = order_id
 
-    def validate(self):
+    '''def validate(self):
         first_name_validator(self.first_name)
         last_name_validator(self.last_name)
-        phone_number_validator(self.phone_number)
+        phone_number_validator(self.phone_number)'''
 
     def __repr__(self):
         return f"{self.__dict__}"

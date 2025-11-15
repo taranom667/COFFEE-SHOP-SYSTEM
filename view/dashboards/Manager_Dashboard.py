@@ -27,8 +27,8 @@ class manager_dashboard():
         btn3.place(x=20, y=250, width=200, height=40)
 
         btn4 = Button(self.window, text="Inventory", width=8, font=("Arial", 12), bg="DodgerBlue4",
-                      command=self.Inventory_management)
-        btn4.place(x=20, y=230, width=200, height=40)
+                      command=self.inventory_management)
+        btn4.place(x=20, y=300, width=200, height=40)
 
     def employee_managerpanel(self):
         Employee_manager()

@@ -27,7 +27,7 @@ class Order_Controller:
         except Exception as e:
             Logger.error(f"Order Update Error: {e}")
             return False, e
- 
+
     @classmethod
     def delete(cls, id):
         try:

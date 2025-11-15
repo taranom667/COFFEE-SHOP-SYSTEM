@@ -25,4 +25,3 @@ class chef_dashboard():
     def menu(self):
         Menu()
 
-        self.window.mainloop()

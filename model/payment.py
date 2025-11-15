@@ -10,10 +10,10 @@ class Payment:
         self.status = status
         self.factor_id = factor_id
 
-    def validate(self):
+    '''def validate(self):
         total_price_validator(self.total_price)
         payment_type_validator(self.payment_type)
-        status_validator(self.status)
+        status_validator(self.status)'''
 
 
     def __repr__(self):

@@ -19,13 +19,13 @@ class Dish():
         return tuple(
             (self.id, self.name, self.quantity, self.price, self.category, self.available, self.ingredients))
 
-    def validate(self):
+    '''def validate(self):
      name_validator(self.name)
      quantity_validator(self.quantity)
      price_validator(self.price)
      category_validator(self.category)
      available_validator(self.available)
-     ingredients_validator((self.ingredients))
+     ingredients_validator((self.ingredients))'''
 
 
     def check_availability(dish):
