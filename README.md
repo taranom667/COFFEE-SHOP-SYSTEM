@@ -1,5 +1,4 @@
-# COFFEE-SHOP-SYSTEM
-حتماً! این هم کل README آماده و یکپارچه برای GitHub، می‌تونی مستقیم کپی کنی:
+# COFFEE-SHOP-SYSTEM:
 
 # 🏪 سیستم مدیریت فروشگاه
 
