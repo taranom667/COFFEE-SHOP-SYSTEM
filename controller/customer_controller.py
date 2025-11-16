@@ -8,7 +8,7 @@ class Customer_Controller:
     def save(cls,  first_name, last_name, phone_number, order_id):
         try:
             customer = Customer(None, first_name, last_name, phone_number, order_id)
-            customer.validate()
+            #customer.validate()
             customer =Customer_Service.save(customer)
             Logger.info(f"Customer {customer} saved")
             return True, f"Customer Saved Successfully"
@@ -20,7 +20,7 @@ class Customer_Controller:
     def update(cls, id, first_name, last_name, phone_number, order_id):
         try:
             customer = Customer(id,first_name, last_name,phone_number, order_id)
-            customer.validate()
+            #customer.validate()
             customer =Customer_Service.update(customer)
             Logger.info(f"Customer {customer} updated")
             return True, "Customer Updated Successfully"

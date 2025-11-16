@@ -8,7 +8,7 @@ class Payment_Controller:
     def save(cls, order_id, total_price, payment_type, date_time, customer_id, status, factor_id):
         try:
             payment = Payment(None, order_id, total_price, payment_type, date_time, customer_id, status, factor_id)
-            payment.validate()
+            #payment.validate()
             payment = Payment_Service.save(payment)
             Logger.info(f"Payment {payment} saved")
             return True, f"Payment Saved Successfully"
@@ -20,7 +20,7 @@ class Payment_Controller:
     def update(cls, id, order_id, total_price, payment_type, date_time, customer_id, status, factor_id):
         try:
             payment = Payment(id, order_id, total_price, payment_type, date_time, customer_id, status, factor_id)
-            payment.validate()
+            #payment.validate()
             payment = Payment_Service.update(payment)
             Logger.info(f"Payment {payment} updated")
             return True, "Payment Updated Successfully"

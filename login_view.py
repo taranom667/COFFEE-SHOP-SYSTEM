@@ -13,7 +13,7 @@ from view.dashboards.Chef_Dashboard import chef_dashboard
 from view.dashboards.Manager_Dashboard import manager_dashboard
 from view.dashboards.Waiter_Dashboaard import waiter_dashboard
 from view.dashboards.Cashier_Dashboard import cashier_dashboard
-from view.dashboards.Courier_Dashboard import courier_dashboard
+from view.dashboards.Delivery_Dashboard import Delivery_dashboard
 
 
 class LoginView:
@@ -30,8 +30,8 @@ class LoginView:
         Label(self.window, text="Welcome!", font=("Times New Roman", 40, "italic"), fg="DodgerBlue4").place(x=30, y=70)
         self.username = LabelWithEntry(self.window, "Username", 50, 200)
         self.password = LabelWithEntry(self.window, "Password", 50, 250)
-        self.username.set("kia987")
-        self.password.set("1234ystdf")
+        self.username.set("tari")
+        self.password.set("123")
         Button(self.window, text="Login", width=8, font=("Arial", 14), bg="DodgerBlue4", command=self.login).place(
             x=140, y=300,
             width=100,
@@ -54,12 +54,10 @@ class LoginView:
                 manager_dashboard()
             elif dash_role == "cashier":
                 cashier_dashboard()
-            elif dash_role == "manager":
-                courier_dashboard()
             elif dash_role == "waiter":
                 waiter_dashboard()
             elif dash_role == "courier":
-                courier_dashboard()
+                Delivery_dashboard()
 
 
         else:

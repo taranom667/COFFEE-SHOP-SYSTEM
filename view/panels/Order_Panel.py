@@ -1,15 +1,17 @@
 from rich.panel import Panel
 from view.component.label_with_entry import LabelWithEntry
 from view import *
-
-from model.raw_material import Raw_material
-from controller.rawmaterial_controller  import ra
+from model.order import Order
+from controller.order_controller import Order_Controller
 from model.session import *
+import tkinter.ttk as ttk
+from tkinter.ttk import Combobox
 
-class Inventory_management(Panel):
+
+class Order_panel(Panel):
     def __init__(self):
         self.window = Tk()
-        self.window.title("menu")
+        self.window.title("0rder")
         self.window.geometry("1060x520")
         self.window.configure(background="#d9d9d9")
 
@@ -19,16 +21,19 @@ class Inventory_management(Panel):
                            270, 20,
                            16,
                            self.select_from_table)
-        #if dash_role == "chef":
+        # if dash_role == "chef":
         self.id = LabelWithEntry(self.window, "ID", 20, 20, state="readonly")
         self.customer_name = LabelWithEntry(self.window, "CustomerName", 20, 60)
         self.dish = LabelWithEntry(self.window, "dish", 20, 100)
-        self.status = LabelWithEntry(self.window, "Status", 20, 140)
+        self.status = Label(self.window,text="status").place(x=20, y=140)
+
+        self.status=StringVar()
+        ttk.Combobox(self.window, textvariable=self.status, values=["confrimed", "processing", "in transit", "ready","delivered", "cancel"], width=17).place(x=110, y=140)
+
+
         self.total_price = LabelWithEntry(self.window, "Total Price", 20, 180, data_type=IntVar)
         self.delivery_id = LabelWithEntry(self.window, "Delivery ID", 20, 220, data_type=IntVar)
         self.date_time = LabelWithEntry(self.window, "Date Time", 20, 260)
-
-
 
         Button(self.window, text="Select order", width=19, command=self.select_order).place(x=20, y=380)
         Button(self.window, text="Refresh", width=7, command=self.refresh).place(x=180, y=380)
@@ -49,7 +54,8 @@ class Inventory_management(Panel):
             messagebox.showerror("order Save Error", message)
 
     def edit_click(self):
-        status, message = Order_Controller.update(self.id.get(), self.customer_name.get(), self.dish.get(), self.status.get(),
+        status, message = Order_Controller.update(self.id.get(), self.customer_name.get(), self.dish.get(),
+                                                  self.status.get(),
                                                   self.total_price.get(), self.delivery_id.get(), self.date_time.get())
         if status:
             messagebox.showinfo("order update", message)
@@ -69,7 +75,7 @@ class Inventory_management(Panel):
         self.id.clear()
         self.customer_name.clear()
         self.dish.clear()
-        self.status.clear()
+        self.status.set("")
         self.total_price.clear()
         self.delivery_id.clear()
         self.date_time.clear()

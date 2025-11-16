@@ -1,9 +1,9 @@
-from model.inventory import Inventory
-from view.dashboards.DashboardView import *
-from view.dashboards.Employee_Manager_Panel import Employee_manager
-from view.dashboards.Menu_Panel import Menu
-from view.dashboards.Financial_Management_Panel import Financial_management
-from view.dashboards.Inventory_Management_Panel import Inventory_management
+
+from view import *
+from view.panels.Employee_Manager_Panel import Employee_manager
+from view.panels.Menu_Panel import Menu
+from view.panels.Financial_Management_Panel import Financial_management
+from view.panels.Inventory_Management_Panel import Inventory_management
 
 
 class manager_dashboard():

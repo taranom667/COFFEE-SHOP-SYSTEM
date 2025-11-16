@@ -1,7 +1,6 @@
 from rich.panel import Panel
 from view.component.label_with_entry import LabelWithEntry
 from view import *
-from model.employee import Employee
 from controller.employee_controller import Employee_Controller
 from model.session import *
 
@@ -10,7 +9,7 @@ class Employee_manager(Panel):
     def __init__(self):
         self.window = Tk()
         self.window.title("Employee Managerpanel")
-        self.window.geometry("1060x440")
+        self.window.geometry("1060x540")
         self.window.configure(background="#d9d9d9")
 
         self.id = LabelWithEntry(self.window, "Id", 20, 20, state="readonly")
@@ -22,10 +21,13 @@ class Employee_manager(Panel):
         self.salary = LabelWithEntry(self.window, "Salary", 20, 260, data_type=IntVar)
         self.phone_number = LabelWithEntry(self.window, "Phone_number", 20, 300)
 
+        self.search_role = LabelWithEntry(self.window, "Role", 300, 20, distance=50,
+                                          on_keypress_function=self.search_role)
+
         self.table = Table(self.window,
                            ["Id", "FirstName", "LastName", "Role", "Username", "Password", "Salary", "Phone_number"],
                            [40, 100, 100, 60, 100, 100, 100, 100, 60],
-                           270, 20,
+                           300, 50,
                            16,
                            self.select_from_table)
 
@@ -102,5 +104,8 @@ class Employee_manager(Panel):
 
     def refresh(self):
         pass
-
+    def search_role(self):
+         status, employee_list = Employee_Controller.find_by_role(self.search_role.get())
+         if status and employee_list:
+                self.table.refresh_table(employee_list)
 

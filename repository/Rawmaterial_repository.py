@@ -9,7 +9,7 @@ class Raw_material_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -20,7 +20,8 @@ class Raw_material_repository:
         self.connect()
         self.cursor.execute(
             "insert into Raw_materials(name, category, unit, quantity, price, purchase_date, expiry_date, location) values (?,?,?,?,?,?,?,?)",
-            [raw_material.name,raw_material.category,raw_material.unit,raw_material.quantity,raw_material.purchase_date,raw_material.expiry_date,raw_material.location])
+            [raw_material.name, raw_material.category, raw_material.unit, raw_material.quantity, raw_material.price,
+        raw_material.purchase_date, raw_material.expiry_date, raw_material.location])
         raw_material.id = self.cursor.lastrowid
         self.connection.commit()
         self.disconnect()
@@ -29,9 +30,9 @@ class Raw_material_repository:
     def update(self, raw_material):
         self.connect()
         self.cursor.execute(
-            "update Raw_materials set first_name=?,last_name=?,role=?,username=?,password=?,salary=? where id=?",
-            [raw_material.first_name, raw_material.last_name, raw_material.role, raw_material.username, raw_material.password,
-             raw_material.salary, raw_material.id])
+            "update Raw_materials set name=? , category=?, unit=?, quantity=?, price=?, purchase_date=?, expiry_date=?, location=? where id=?",
+            [raw_material.name, raw_material.category, raw_material.unit, raw_material.purchase_date,
+             raw_material.expiry_date, raw_material.location, raw_material.id])
 
         self.connection.commit()
         self.disconnect()
@@ -45,14 +46,14 @@ class Raw_material_repository:
         self.disconnect()
         return raw_material
 
-    def find_by_name(self,name):
+    def find_by_name(self, name):
         self.connect()
         self.cursor.execute("select * from Raw_materials where name=?", [name])
         raw_material_list = [Raw_material(*raw_material) for raw_material in self.cursor.fetchall()]
         self.disconnect()
         return raw_material_list
 
-    def find_by_category(self,category):
+    def find_by_category(self, category):
         self.connect()
         self.cursor.execute("select * from Raw_materials where  category=?", [category])
         raw_material_list = [Raw_material(*raw_material) for raw_material in self.cursor.fetchall()]
@@ -66,7 +67,7 @@ class Raw_material_repository:
         self.disconnect()
         return raw_material_list
 
-    def find_by_purchase_date(self,purchasedate):
+    def find_by_purchase_date(self, purchasedate):
         self.connect()
         self.cursor.execute("select * from Raw_materials where  purchase_date=?", [purchasedate])
         raw_material_list = [Raw_material(*raw_material) for raw_material in self.cursor.fetchall()]
@@ -80,14 +81,12 @@ class Raw_material_repository:
         self.disconnect()
         return raw_material_list
 
-    def find_by_expiry_date(self,expirydate):
+    def find_by_expiry_date(self, expiry_date):
         self.connect()
-        self.cursor.execute("select * from Raw_materials where expiry_date=?", [expirydate])
+        self.cursor.execute("select * from Raw_materials where expiry_date=?", [expiry_date])
         raw_material_list = [Raw_material(*raw_material) for raw_material in self.cursor.fetchall()]
         self.disconnect()
         return raw_material_list
-
-
 
     def get_all(self):
         self.connect()

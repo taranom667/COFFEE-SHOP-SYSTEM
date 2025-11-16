@@ -1,6 +1,6 @@
 from view.dashboards.DashboardView import *
-from view.dashboards.Order_Panel import Order_panel
-from view.dashboards.Menu_Panel import Menu
+from view.panels.Order_Panel import Order_panel
+from view.panels.Menu_Panel import Menu
 
 
 class waiter_dashboard():

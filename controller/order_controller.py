@@ -8,7 +8,7 @@ class Order_Controller:
     def save(cls, customer_name, dish, status, total_price, delivery_id, date_time):
         try:
             order = Order(None,customer_name, dish, status, total_price, delivery_id, date_time)
-            order.validate()
+            #order.validate()
             order = Order_Service.save(order)
             Logger.info(f"Order {order} saved")
             return True, f"Order Saved Successfully"
@@ -20,7 +20,7 @@ class Order_Controller:
     def update(cls, id, customer_name, dish, status, total_price, delivery_id, date_time):
         try:
             order = Order(id, customer_name, dish, status, total_price, delivery_id, date_time)
-            order.validate()
+            #order.validate()
             order = Order_Service.update(order)
             Logger.info(f"Order {order} updated")
             return True, "Order Updated Successfully"

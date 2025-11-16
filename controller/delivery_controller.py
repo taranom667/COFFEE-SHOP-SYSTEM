@@ -8,7 +8,7 @@ class Delivery_Controller:
     def save(cls, order_id, rider, status, address):
         try:
             delivery = Delivery(None, order_id, rider, status, address)
-            delivery.validate()
+            #delivery.validate()
             delivery = Delivery_Service.save(delivery)
             Logger.info(f"Delivery {delivery} saved")
             return True, f"Delivery Saved Successfully"
@@ -20,7 +20,7 @@ class Delivery_Controller:
     def update(cls, id,order_id, rider, status, address):
         try:
             delivery = Delivery(id,order_id, rider, status, address)
-            delivery.validate()
+            #delivery.validate()
             delivery = Delivery_Service.update(delivery)
             Logger.info(f"Delivery {delivery} updated")
             return True, "Delivery Updated Successfully"

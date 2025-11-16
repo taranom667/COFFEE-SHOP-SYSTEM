@@ -72,7 +72,7 @@ class Employee_repository:
 
     def find_by_role(self, role):
         self.connect()
-        self.cursor.execute("select * from employees where  role=?", [role])
+        self.cursor.execute("select * from employees where  role like ?", [role+"%"])
         employee_list = [Employee(*employee) for employee in self.cursor.fetchall()]
         self.disconnect()
         return employee_list

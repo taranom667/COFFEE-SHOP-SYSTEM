@@ -49,16 +49,16 @@ class Raw_material_Controller:
             return False, e
 
     @classmethod
-    def find_by_username_and_password(cls, username, password):
+    def find_by_name(cls, name):
         try:
-            raw_material = Raw_material_Service.find_by_username_and_password(username, password)
+            raw_material = Raw_material_Service.find_by_name(name)
             if raw_material:
-                Logger.info(f"Raw_material FindByUsernameAndPassword {username}")
+                Logger.info(f"Raw_material FindByname {name}")
                 return True, raw_material
             else:
                 raise Exception("User Not Found !!!")
         except Exception as e:
-            Logger.error(f"Raw_material FindByUsernameAndPassword Error: {e}")
+            Logger.error(f"Raw_material FindByname Error: {e}")
             return False, e
 
     @classmethod
@@ -72,51 +72,43 @@ class Raw_material_Controller:
             return False, e
 
     @classmethod
-    def find_by_firstname_and_lastname(cls, firstname, lastname):
+    def find_by_category(cls, category):
         try:
-            raw_material_list = Raw_material_Service.find_by_firstname_and_lastname(firstname, lastname)
-            Logger.info(f"Raw_material FindByFirstnameAndLastname {firstname} {lastname}")
+            raw_material_list = Raw_material_Service.find_by_category(category)
+            Logger.info(f"Raw_material FindBycategory{category} {category}")
             return True, raw_material_list
         except Exception as e:
-            Logger.error(f"Raw_material FindByFirstnameAndLastname Error: {e}")
+            Logger.error(f"Raw_material FindBycategoryError: {e}")
             return False, e
 
     @classmethod
-    def find_by_phone_number(cls, phone_number):
+    def find_by_quantity(cls, quantity):
         try:
-            raw_material_list = Raw_material_Service.find_by_phone_number(phone_number)
-            Logger.info(f"Raw_material FindByPhoneNumber {phone_number}")
+            raw_material_list = Raw_material_Service.find_by_quantity(quantity)
+            Logger.info(f"Raw_material FindByquantity {quantity}")
             return True, raw_material_list
         except Exception as e:
-            Logger.error(f"Raw_material FindByPhoneNumber Error: {e}")
+            Logger.error(f"Raw_material FindByquantity Error: {e}")
             return False, e
 
     @classmethod
-    def find_by_role(cls, role):
+    def find_by_purchase_date(cls, purchase_date):
         try:
-            raw_material_list = Raw_material_Service.find_by_role(role)
-            Logger.info(f"Raw_material FindByRole {role}")
+            raw_material_list = Raw_material_Service.find_by_purchase_date(purchase_date)
+            Logger.info(f"Raw_material FindBypurchase_date {purchase_date}")
             return True, raw_material_list
         except Exception as e:
-            Logger.error(f"Raw_material FindByRole Error: {e}")
+            Logger.error(f"Raw_material FindBypurchase_date Error: {e}")
             return False, e
 
     @classmethod
-    def find_by_order_id(cls, order_id):
+    def find_by_expiry_date(cls, expiry_date):
         try:
-            raw_material_list = Raw_material_Service.find_by_role(order_id)
-            Logger.info(f"Raw_material FindByRole {order_id}")
+            raw_material_list = Raw_material_Service.find_by_purchase_date(expiry_date)
+            Logger.info(f"Raw_material FindByExpiry_date {expiry_date}")
             return True, raw_material_list
         except Exception as e:
-            Logger.error(f"Raw_material FindByRole Error: {e}")
+            Logger.error(f"Raw_material FindByExpiry_date Error: {e}")
             return False, e
 
-    @classmethod
-    def find_by_salary_min(cls, salary_min):
-        try:
-            raw_material_list = Raw_material_Service.find_by_salary_min(salary_min)
-            Logger.info(f"Raw_material FindBySalaryMin {salary_min}")
-            return True, raw_material_list
-        except Exception as e:
-            Logger.error(f"Raw_material FindBySalaryMin Error: {e}")
-            return False, e
+
