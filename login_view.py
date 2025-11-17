@@ -56,6 +56,8 @@ class LoginView:
                 cashier_dashboard()
             elif dash_role == "waiter":
                 waiter_dashboard()
+            elif dash_role ==  "rider":
+                Delivery_dashboard()
             elif dash_role == "courier":
                 Delivery_dashboard()
 
