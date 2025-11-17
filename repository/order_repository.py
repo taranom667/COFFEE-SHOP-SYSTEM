@@ -9,7 +9,7 @@ class Order_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
@@ -30,7 +30,8 @@ class Order_repository:
         self.connect()
         self.cursor.execute(
             "update orders set customer_name=?,dish=?,status=?,total_price=?,delivery_id=?,date_time=? where id=?",
-            [order.customer_name, order.dish, order.status, order.total_price, order.delivery_id, order.date_time, order.id])
+            [order.customer_name, order.dish, order.status, order.total_price, order.delivery_id, order.date_time,
+             order.id])
 
         self.connection.commit()
         self.disconnect()
@@ -49,8 +50,6 @@ class Order_repository:
         order_list = [Order(*order) for order in self.cursor.fetchall()]
         self.disconnect()
         return order_list
-
-
 
     def find_by_status(self, status):
         self.connect()
@@ -81,6 +80,7 @@ class Order_repository:
         return order_list
 
 
+
 '''
     def find_by_date_time(self, role):
         self.connect()
@@ -89,6 +89,3 @@ class Order_repository:
         self.disconnect()
         return order_list
 '''
-
-
-

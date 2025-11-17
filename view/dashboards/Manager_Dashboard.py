@@ -12,7 +12,7 @@ from view.panels.Customers_Panel import Customer_panel
 class manager_dashboard():
     def __init__(self):
         self.window = Tk()
-        self.window.title("manager panel")
+        self.window.title("payment panel")
         self.window.configure(bg="#efefef")
         self.window.geometry("400x700")
 
@@ -34,11 +34,11 @@ class manager_dashboard():
         btn4.place(x=20, y=300, width=200, height=40)
 
         btn5 = Button(self.window, text="orders", width=8, font=("Arial", 12), bg="DodgerBlue4",
-                      command=self.financial_management)
+                      command=self.orders)
         btn5.place(x=20, y=350, width=200, height=40)
 
         btn6 = Button(self.window, text="Delivery", width=8, font=("Arial", 12), bg="DodgerBlue4",
-                      command=self.inventory_management)
+                      command=self.delivery_panel())
         btn6.place(x=20, y=400, width=200, height=40)
 
         btn7 = Button(self.window, text="Customers", width=8, font=("Arial", 12), bg="DodgerBlue4",

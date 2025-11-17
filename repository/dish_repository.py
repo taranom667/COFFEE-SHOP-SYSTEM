@@ -36,10 +36,10 @@ class Dish_repository:
         self.disconnect()
         return dish
 
-    def delete(self, dish):
+    def delete(self, id):
         self.connect()
         self.cursor.execute(
-            "delete from dishes where id=?", [dish.id])
+            "delete from dishes where id=?", [id])
         self.connection.commit()
         self.disconnect()
 
