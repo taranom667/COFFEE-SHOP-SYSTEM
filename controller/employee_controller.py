@@ -8,7 +8,7 @@ class Employee_Controller:
     def save(cls, first_name, last_name, role, username, password, salary, phone_number):
         try:
             employee = Employee(None, first_name, last_name, role, username, password, salary, phone_number)
-            employee.validate()
+          #  employee.validate()
             employee = Employee_Service.save(employee)
             Logger.info(f"Employee {employee} saved")
             return True, f"Employee Saved Successfully"
@@ -20,7 +20,7 @@ class Employee_Controller:
     def update(cls, id, first_name, last_name, role, username, password, salary, phone_number):
         try:
             employee = Employee(id, first_name, last_name, role, username, password, salary, phone_number)
-            employee.validate()
+          #  employee.validate()
             employee = Employee_Service.update(employee)
             Logger.info(f"Employee {employee} updated")
             return True, "Employee Updated Successfully"

@@ -1,11 +1,9 @@
-from model.employee import Employee
-
 
 class Session:
     employee=None
     customer = None
     order = None
-    dish = []
+    dish = None
     payment = None
 
 

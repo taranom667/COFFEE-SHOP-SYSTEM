@@ -23,8 +23,8 @@ class Menu(Panel):
 
         self.table = Table(self.window,
                            ["Id", "Name", "Quantity", "Price", "Category", "Available", "Ingredients"],
-                           [40, 100, 100, 60, 100, 100, 100, 100,110],
-                           270, 20,
+                           [40, 100, 100, 60, 100, 100, 100, 100, 100],
+                           270, 60,
                            16,
                            self.select_from_table)
 
@@ -34,6 +34,13 @@ class Menu(Panel):
         Button(self.window, text="Edit", width=7, command=self.edit_click).place(x=100, y=420)
         Button(self.window, text="Delete", width=7, command=self.delete_click).place(x=180, y=420)
         self.reset_form()
+
+        self.search_name=LabelWithEntry(self.window, "Name", 270, 20, distance=50,
+                                          on_keypress_function=self.search_by_name)
+        self.search_category=LabelWithEntry(self.window, "Category", 480, 20, distance=70,
+                                          on_keypress_function=self.search_by_category)
+
+
         self.window.mainloop()
 
     def save_click(self):
@@ -96,3 +103,14 @@ class Menu(Panel):
 
     def refresh(self):
         pass
+
+    def search_by_name(self):
+        status,dish_list=Dish_Controller.find_by_name(self.search_name.get())
+        if status and dish_list:
+            self.table.refresh_table(dish_list)
+
+    def search_by_category(self):
+        status,dish_list=Dish_Controller.find_by_category(self.search_category.get())
+        if status and dish_list:
+            self.table.refresh_table(dish_list)
+

@@ -3,14 +3,14 @@ from view.component.label_with_entry import LabelWithEntry
 from view import *
 from controller.employee_controller import Employee_Controller
 from model.session import *
-
+from model.employee import Employee
 
 class Employee_manager(Panel):
     def __init__(self):
         self.window = Tk()
         self.window.title("Employee Managerpanel")
         self.window.geometry("1060x540")
-        self.window.configure(background="#d9d9d9")
+        self.window.configure(background="AntiqueWhite1")
 
         self.id = LabelWithEntry(self.window, "Id", 20, 20, state="readonly")
         self.first_name = LabelWithEntry(self.window, "FirstName", 20, 60)
@@ -31,11 +31,11 @@ class Employee_manager(Panel):
                            16,
                            self.select_from_table)
 
-        Button(self.window, text="Select Employee", width=19, command=self.select_employee).place(x=20, y=380)
-        Button(self.window, text="Refresh", width=7, command=self.refresh).place(x=180, y=380)
-        Button(self.window, text="Save", width=7, command=self.save_click).place(x=20, y=420)
-        Button(self.window, text="Edit", width=7, command=self.edit_click).place(x=100, y=420)
-        Button(self.window, text="Delete", width=7, command=self.delete_click).place(x=180, y=420)
+
+        Button(self.window, text="Refresh", width=7,bg="#97C6E0", font=("Arial", 14) , command=self.refresh).place(x=180, y=380)
+        Button(self.window, text="Save", width=7,bg="#97C6E0" , font=("Arial", 14), command=self.save_click).place(x=20, y=420)
+        Button(self.window, text="Edit", width=7,bg="#97C6E0" , font=("Arial", 14), command=self.edit_click).place(x=100, y=420)
+        Button(self.window, text="Delete", width=7,bg="#97C6E0", font=("Arial", 14) , command=self.delete_click).place(x=180, y=420)
         self.reset_form()
         self.window.mainloop()
 
@@ -85,7 +85,7 @@ class Employee_manager(Panel):
         if selected_employee:
             status, employee = Employee_Controller.find_by_id(selected_employee[0])
             if status:
-                employee = Employee(*selected_employee)
+                employee =Employee(*selected_employee)
                 self.id.set(employee.id)
                 self.first_name.set(employee.first_name)
                 self.last_name.set(employee.last_name)

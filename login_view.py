@@ -1,14 +1,8 @@
-from Demos.win32ts_logoff_disconnected import username
-from PIL import Image, ImageTk
-from tkinter import *
-from tkinter import messagebox
-from model.employee import Employee
-from PIL.Image import radial_gradient
 
 from view import *
 from view.component.label_with_entry import LabelWithEntry
 from controller.employee_controller import Employee_Controller
-from model.session import Session
+from model.session import *
 from view.dashboards.Chef_Dashboard import chef_dashboard
 from view.dashboards.Manager_Dashboard import manager_dashboard
 from view.dashboards.Waiter_Dashboaard import waiter_dashboard
@@ -56,7 +50,7 @@ class LoginView:
                 cashier_dashboard()
             elif dash_role == "waiter":
                 waiter_dashboard()
-            elif dash_role ==  "rider":
+            elif dash_role == "rider":
                 Delivery_dashboard()
             elif dash_role == "courier":
                 Delivery_dashboard()

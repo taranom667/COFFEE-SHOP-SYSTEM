@@ -45,14 +45,14 @@ class Dish_repository:
 
     def find_by_name(self,name):
         self.connect()
-        self.cursor.execute("select * from dishes where name=?", [name])
+        self.cursor.execute("select * from dishes where name like ?", [name+"%"])
         dish_list = [Dish(*dish) for dish in self.cursor.fetchall()]
         self.disconnect()
         return dish_list
 
     def find_by_category(self,category):
         self.connect()
-        self.cursor.execute("select * from dishes where  category=?", [category])
+        self.cursor.execute("select * from dishes where  category like ?", [category+"%"])
         dish_list = [Dish(*dish) for dish in self.cursor.fetchall()]
         self.disconnect()
         return dish_list

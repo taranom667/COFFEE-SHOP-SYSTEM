@@ -1,7 +1,6 @@
 import sqlite3
 from model.delivery import Delivery
 
-
 class Delivery_repository:
 
     def __init__(self):

@@ -9,7 +9,7 @@ class Order_repository:
         self.connection = None
 
     def connect(self):
-        self.connection = sqlite3.connect("../database/COFFEESHOP_db")
+        self.connection = sqlite3.connect("./database/COFFEESHOP_db")
         self.cursor = self.connection.cursor()
 
     def disconnect(self):

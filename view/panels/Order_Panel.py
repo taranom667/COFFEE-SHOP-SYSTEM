@@ -4,8 +4,6 @@ from view import *
 from model.order import Order
 from controller.order_controller import Order_Controller
 from model.session import *
-import tkinter.ttk as ttk
-from tkinter.ttk import Combobox
 
 
 class Order_panel(Panel):
@@ -22,14 +20,12 @@ class Order_panel(Panel):
                            16,
                            self.select_from_table)
         # if dash_role == "chef":
+
         self.id = LabelWithEntry(self.window, "ID", 20, 20, state="readonly")
         self.customer_name = LabelWithEntry(self.window, "CustomerName", 20, 60)
         self.dish = LabelWithEntry(self.window, "dish", 20, 100)
-        Label(self.window,text="status").place(x=20, y=140)
-
-        self.status=StringVar()
-        ttk.Combobox(self.window, textvariable=self.status, values=["confrimed", "processing", "in transit", "ready","delivered", "cancel"], width=17).place(x=110, y=140)
-
+        # self.dish.set(Session.dish)
+        self.status = LabelWithEntry(self.window, "Status", 20, 140)
 
         self.total_price = LabelWithEntry(self.window, "Total Price", 20, 180, data_type=IntVar)
         self.delivery_id = LabelWithEntry(self.window, "Delivery ID", 20, 220, data_type=IntVar)
@@ -41,8 +37,7 @@ class Order_panel(Panel):
         Button(self.window, text="Edit", width=7, command=self.edit_click).place(x=100, y=420)
         Button(self.window, text="Delete", width=7, command=self.delete_click).place(x=180, y=420)
         self.reset_form()
-
-
+        self.window.mainloop()
 
     def save_click(self):
         status, message = Order_Controller.save(self.customer_name.get(), self.dish.get(), self.status.get(),
@@ -104,4 +99,11 @@ class Order_panel(Panel):
 
     def refresh(self):
         pass
-        self.window.mainloop()
+
+
+'''
+        Label(self.window,text="status").place(x=20, y=140)
+
+        self.status=StringVar()
+        ttk.Combobox(self.window, textvariable=self.status, values=["confrimed", "processing", "in transit", "ready","delivered", "cancel"], width=17).place(x=110, y=140)
+           '''

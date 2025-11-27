@@ -17,7 +17,7 @@ class Financial_management():
                       command=self.total_sales)
         btn2.place(x=20, y=200, width=200, height=40)
 
-        btn3 = Button(self.window, text="net income", width=8, font=("Arial", 12), bg="DodgerBlue4",
+        btn3 = Button(self.window, text="net income", width=8, font=("Arial", 14), bg="DodgerBlue4",
                       command=self.get_income)
         btn3.place(x=20, y=250, width=200, height=40)
 
